@@ -11,11 +11,27 @@ const DATA_FILE = "EAZ_Anzahl_Kurse.csv";
 const MOBILE_BREAKPOINT = 600;
 const Y_AXIS_HEADROOM = 1.12; // marge au-dessus de la valeur max
 
+
+const titleLookup = {
+  de: "Anzahl Kurse",
+  fr: "Nombre de cours",
+  it: "Numero dei corsi"
+}
+
 // ============================================================
 // p5.js main functions
 // ============================================================
 
 function setup() {
+
+  let params = getURLParams();
+
+  let title = titleLookup[params.lang];
+  console.log("title",title);
+
+  d3.select("#titleContainer").text(title);
+
+
   noCanvas();
   drawChart();
 }
